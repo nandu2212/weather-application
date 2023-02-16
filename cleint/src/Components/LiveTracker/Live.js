@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const url=`https://api.openweathermap.org/data/2.5/weather?`
 const key=`c058c18438a904d5a109c536340230a2`
@@ -7,6 +8,7 @@ const Livetrack=()=>{
     const [latitude,setLatitude]=useState('')
     const [longitude,setlongitude]=useState('')
     const [data,setdata]=useState({})
+    const navigate=useNavigate()
     useEffect(()=>{
         navigator.geolocation.getCurrentPosition((position)=>{
             setLatitude(position.coords.latitude);
@@ -16,11 +18,13 @@ const Livetrack=()=>{
             setdata(response.data)
             console.log(response.data)
         })
-
+const searchLocation=()=>{
+navigate('/')
+}
         return(
             <>
-            <input type='text' />
              <div className="container">
+                <button onClick={searchLocation}>search</button>
         <div className="top">
           <div className="location">
             <h1>{data.name}</h1>

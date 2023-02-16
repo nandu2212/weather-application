@@ -1,10 +1,12 @@
 
 import './App.css';
+import Search from './Components/searchlocation/search';
 
 function App() {
   return (
    <>
-   <h1>initial</h1></>
+   <Search/>
+   </>
   );
 }
 

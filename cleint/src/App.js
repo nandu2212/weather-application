@@ -6,8 +6,8 @@ import Search from './Components/searchlocation/search';
 function App() {
   return (
    <>
-  
-   <Livetrack/>
+  <Search/>
+   
    </>
   );
 }

@@ -23,6 +23,7 @@ const Search= () =>{
         value={location}
          onChange={(e)=>{setlocation(e.target.value)}}
         />
+        <button >add a favourite</button>
     </div>
     <div className="container">
         <div className="top">

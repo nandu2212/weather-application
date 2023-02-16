@@ -82,3 +82,8 @@
     margin-left:35%;
     margin-bottom:10px;
   }
+  span{
+    display:inline-block;
+    padding:10px;
+    font-weight: bold;
+  }

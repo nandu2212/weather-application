@@ -3,13 +3,16 @@ import axios from 'axios'
 import './search.css'
 import { useNavigate } from 'react-router-dom'
 const Search= () =>{
+    //setting the city value in location
   const [location,setlocation]=useState([])
+  //storing the data 
   const[data,setData]=useState([]) 
+  //storing the previous searched cities
 const [savedCities,setCity]=useState([])
+//navigating purpose
 const navigate=useNavigate()
   let url =`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c058c18438a904d5a109c536340230a2`
   const searchLocation = () => {
-   
       axios.get(url).then((response) => {
         setData(response.data)
         setCity([
@@ -20,26 +23,22 @@ const navigate=useNavigate()
       setlocation('')
     
   }
- 
+
+  // for getting the particular city weather details we are using function on (onClick)
+const  savedCitiesdata=(data)=>{
+   setlocation(data)
+   searchLocation()
+}
+// redirecting to live location data
   const Liveaction=()=>{
 navigate('/live')
   }
  console.log(savedCities)
   return (
     <>
-    <span>saveCities</span>
-    {
-        savedCities.map((city)=>{
-            return(
-                <>
-                <li >{city}</li>
-                </>
-            )
-        })
-    }
+   
     <div className='header'>
       <input type='text'
-  
        placeholder='Enter Your City'
         value={location}
          onChange={(e)=>{setlocation(e.target.value)}}
@@ -47,6 +46,15 @@ navigate('/live')
         <button onClick={searchLocation}>search</button>
         <button onClick={Liveaction}>Live Updates</button>
     </div>
+    {
+        savedCities.map((city)=>{
+            return(
+                <>
+                <span onClick={savedCitiesdata(city)}>{city}</span>
+                </>
+            )
+        })
+    }
     <div className="container">
         <div className="top">
           <div className="location">
